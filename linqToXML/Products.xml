@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Products>
+  <Product Id="1">
+    <Name>Mouse</Name>
+    <Description>LogicTech m15</Description>
+    <Price>5000</Price>
+  </Product>
+  <Product Id="2">
+    <Name>Projector</Name>
+    <Description>viviket Tech</Description>
+    <Price>500000</Price>
+  </Product>
+  <Product Id="2">
+    <Name>Projector</Name>
+    <Description>viviket Tech</Description>
+    <Price>500000</Price>
+  </Product>
+  <Product Id="2">
+    <Name>Projector</Name>
+    <Description>viviket Tech</Description>
+    <Price>500000</Price>
+  </Product>
+</Products>

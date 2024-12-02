@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="int" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpDesignation" Type="varchar" MaxLength="50" />
+          <Property Name="EmpGender" Type="varchar" MaxLength="50" />
+          <Property Name="EmpSalary" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeeUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="EmployeeUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB2.dbo.Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="int" Nullable="false" />
+          <Property Name="P_Name" Type="varchar" MaxLength="100" />
+          <Property Name="P_Category" Type="varchar" MaxLength="100" />
+          <Property Name="P_Price" Type="float" />
+          <Property Name="P_Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Department" Type="varchar" MaxLength="200" />
+          <Property Name="Role" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Price" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityContainer Name="DB2ModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeUser" EntityType="Self.EmployeeUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeUsers" EntityType="Self.EmployeeUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Products].[P_ID] AS [P_ID], 
+[Products].[P_Name] AS [P_Name], 
+[Products].[P_Category] AS [P_Category], 
+[Products].[P_Price] AS [P_Price], 
+[Products].[P_Quantity] AS [P_Quantity]
+FROM [dbo].[Products] AS [Products]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="Int32" Nullable="false" />
+          <Property Name="EmpName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpGender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpSalary" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EmployeeUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeUser1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="Int32" Nullable="false" />
+          <Property Name="P_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="P_Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="P_Price" Type="Double" />
+          <Property Name="P_Quantity" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="InvDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeUsers" EntityType="Self.EmployeeUser" />
+          <EntitySet Name="EmployeeUsers1" EntityType="Self.EmployeeUser1" />
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB2ModelStoreContainer" CdmEntityContainer="InvDB">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DB2Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpDesignation" ColumnName="EmpDesignation" />
+                <ScalarProperty Name="EmpGender" ColumnName="EmpGender" />
+                <ScalarProperty Name="EmpSalary" ColumnName="EmpSalary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeUsers">
+            <EntityTypeMapping TypeName="DB2Model.EmployeeUser">
+              <MappingFragment StoreEntitySet="EmployeeUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeUsers1">
+            <EntityTypeMapping TypeName="DB2Model.EmployeeUser1">
+              <MappingFragment StoreEntitySet="EmployeeUsers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="DB2Model.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DB2Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DB2Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+                <ScalarProperty Name="P_Category" ColumnName="P_Category" />
+                <ScalarProperty Name="P_Price" ColumnName="P_Price" />
+                <ScalarProperty Name="P_Quantity" ColumnName="P_Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
